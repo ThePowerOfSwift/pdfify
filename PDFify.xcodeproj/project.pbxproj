@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		581631ED22643330005851DA /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581631EC22643330005851DA /* CameraViewController.swift */; };
 		58AF9EB22262971900094078 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF9EB12262971900094078 /* AppDelegate.swift */; };
 		58AF9EB42262971900094078 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF9EB32262971900094078 /* ViewController.swift */; };
 		58AF9EB72262971900094078 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58AF9EB52262971900094078 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		581631EC22643330005851DA /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		58AF9EAE2262971900094078 /* PDFify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDFify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AF9EB12262971900094078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AF9EB32262971900094078 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				58AF9EBD2262971A00094078 /* LaunchScreen.storyboard */,
 				58AF9EC02262971A00094078 /* Info.plist */,
 				58AF9EB82262971900094078 /* PDFify.xcdatamodeld */,
+				581631EC22643330005851DA /* CameraViewController.swift */,
 			);
 			path = PDFify;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58AF9EB42262971900094078 /* ViewController.swift in Sources */,
+				581631ED22643330005851DA /* CameraViewController.swift in Sources */,
 				58AF9EB22262971900094078 /* AppDelegate.swift in Sources */,
 				58AF9EBA2262971900094078 /* PDFify.xcdatamodeld in Sources */,
 			);
