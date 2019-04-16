@@ -23,11 +23,11 @@
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eD4-F8-7hn" userLabel="PDFs">
                                 <rect key="frame" x="0.0" y="575" width="375" height="203"/>
-                                <color key="backgroundColor" red="0.043137254899999998" green="0.37647058820000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <color key="tintColor" red="0.17046218590000001" green="0.2260012709" blue="0.30399276450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.043137254899999998" green="0.37647058820000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="ZZf-19-MPb" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="65%" id="05W-eX-m6m"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eD4-F8-7hn" secondAttribute="bottom" id="6UK-ge-dg0"/>

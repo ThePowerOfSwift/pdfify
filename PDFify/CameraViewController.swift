@@ -22,7 +22,6 @@ class CameraViewController: UIViewController {
     
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         
         super.viewDidLoad()
         session = AVCaptureSession()
@@ -50,8 +49,12 @@ class CameraViewController: UIViewController {
                 session!.startRunning()
             }
         }
+        
+        drawCaptureButton()
+    
     }
     
+   
    
         
         
@@ -72,6 +75,43 @@ class CameraViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    func drawCaptureButton() {
+        
+        // outer circle
+        let outerCirclePath = UIBezierPath(arcCenter: CGPoint(x: view.frame.width / 2,y: photoPreview.frame.height * 0.95), radius: CGFloat(30), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        
+        let outerShapeLayer = CAShapeLayer()
+        outerShapeLayer.path = outerCirclePath.cgPath
+        
+        //change the fill color
+        outerShapeLayer.fillColor = UIColor.clear.cgColor
+        //you can change the stroke color
+        outerShapeLayer.strokeColor = UIColor(white: 1, alpha: 0.5).cgColor
+        //you can change the line width
+        outerShapeLayer.lineWidth = 5.0
+        
+        view.layer.addSublayer(outerShapeLayer)
+        
+        // inner circle
+        let innerCirclePath = UIBezierPath(arcCenter: CGPoint(x: view.frame.width / 2,y: photoPreview.frame.height * 0.95), radius: CGFloat(23), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        
+        let innerShapeLayer = CAShapeLayer()
+        innerShapeLayer.path = innerCirclePath.cgPath
+        
+        //change the fill color
+        innerShapeLayer.fillColor = UIColor(white: 1, alpha: 0.5).cgColor
+        //you can change the stroke color
+        innerShapeLayer.strokeColor = UIColor.white.cgColor
+        //you can change the line width
+        innerShapeLayer.lineWidth = 3.0
+        
+        view.layer.addSublayer(innerShapeLayer)
+        
+    
+    
+    }
 }
 
 
