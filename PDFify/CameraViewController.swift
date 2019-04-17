@@ -18,12 +18,13 @@ class CameraViewController: UIViewController {
     var stillImageOutput: AVCapturePhotoOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
-    
-    
+    let innerShapeLayer = CAShapeLayer()
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        
         session = AVCaptureSession()
         session!.sessionPreset = AVCaptureSession.Preset.photo
         let backCamera =  AVCaptureDevice.default(for: AVMediaType.video)
@@ -51,6 +52,9 @@ class CameraViewController: UIViewController {
         }
         
         drawCaptureButton()
+        
+    
+        
     
     }
     
@@ -97,7 +101,7 @@ class CameraViewController: UIViewController {
         // inner circle
         let innerCirclePath = UIBezierPath(arcCenter: CGPoint(x: view.frame.width / 2,y: photoPreview.frame.height * 0.95), radius: CGFloat(23), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
         
-        let innerShapeLayer = CAShapeLayer()
+        //innerShapeLayer = CAShapeLayer()
         innerShapeLayer.path = innerCirclePath.cgPath
         
         //change the fill color
@@ -109,8 +113,18 @@ class CameraViewController: UIViewController {
         
         view.layer.addSublayer(innerShapeLayer)
         
+    }
     
+    @objc func captureImg() {
+       print("tapped")
+    }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        let point = touch!.location(in: self.view)
+        if innerShapeLayer.path!.contains(point) {
+            print("tapped circle")
+        }
     }
 }
 
