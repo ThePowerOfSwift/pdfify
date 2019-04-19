@@ -18,6 +18,7 @@ class CameraViewController: UIViewController {
     var stillImageOutput: AVCapturePhotoOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
+    let outerShapeLayer = CAShapeLayer()
     let innerShapeLayer = CAShapeLayer()
 
     override func viewDidLoad() {
@@ -53,15 +54,9 @@ class CameraViewController: UIViewController {
         
         drawCaptureButton()
         
-    
-        
-    
     }
     
-   
-   
-        
-        
+
         // Do any additional setup after loading the view.
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -86,7 +81,7 @@ class CameraViewController: UIViewController {
         // outer circle
         let outerCirclePath = UIBezierPath(arcCenter: CGPoint(x: view.frame.width / 2,y: photoPreview.frame.height * 0.95), radius: CGFloat(30), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
         
-        let outerShapeLayer = CAShapeLayer()
+        //let outerShapeLayer = CAShapeLayer()
         outerShapeLayer.path = outerCirclePath.cgPath
         
         //change the fill color
@@ -115,15 +110,25 @@ class CameraViewController: UIViewController {
         
     }
     
-    @objc func captureImg() {
-       print("tapped")
-    }
+   
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        // capture circle path
+        let captureCirclePath = UIBezierPath(arcCenter: CGPoint(x: view.frame.width / 2,y: photoPreview.frame.height * 0.95), radius: CGFloat(21), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        
+        let pathAnimation = CABasicAnimation(keyPath: "path")
+        pathAnimation.toValue = captureCirclePath.cgPath
+        pathAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        pathAnimation.duration = 0.10
+        pathAnimation.autoreverses = true
+        
+        // manage tounch
         let touch = touches.first
         let point = touch!.location(in: self.view)
-        if innerShapeLayer.path!.contains(point) {
+        if outerShapeLayer.path!.contains(point) {
             print("tapped circle")
+            innerShapeLayer.add(pathAnimation, forKey: "pathAnimation")
         }
     }
 }
