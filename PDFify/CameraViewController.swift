@@ -9,10 +9,16 @@
 import UIKit
 import AVFoundation
 
-class CameraViewController: UIViewController {
-    
+class CameraViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+
+    var PDFs: [UIImage] = []
     
     @IBOutlet weak var photoPreview: UIImageView!
+    
+   
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    
     
     var session: AVCaptureSession?
     var stillImageOutput: AVCapturePhotoOutput?
@@ -24,7 +30,6 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         
         session = AVCaptureSession()
         session!.sessionPreset = AVCaptureSession.Preset.photo
@@ -58,10 +63,23 @@ class CameraViewController: UIViewController {
     
 
         // Do any additional setup after loading the view.
+    
+    // make preview layer fit camera view
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         videoPreviewLayer!.frame = photoPreview.bounds
     }
+    
+    // collection view
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PDFCell", for: indexPath)
+        return cell
+    }
+    
     
     
 
@@ -74,6 +92,7 @@ class CameraViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
     
     
     func drawCaptureButton() {
