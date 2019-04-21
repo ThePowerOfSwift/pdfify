@@ -10,14 +10,23 @@ import UIKit
 import AVFoundation
 
 class CameraViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> temp
     var PDFs: [UIImage] = []
     
     @IBOutlet weak var photoPreview: UIImageView!
     
+<<<<<<< HEAD
    
     @IBOutlet weak var collectionView: UICollectionView!
     
+=======
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+>>>>>>> temp
     
     
     var session: AVCaptureSession?
@@ -26,11 +35,16 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     let outerShapeLayer = CAShapeLayer()
     let innerShapeLayer = CAShapeLayer()
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+<<<<<<< HEAD
+=======
+        
+        
+>>>>>>> temp
         session = AVCaptureSession()
         session!.sessionPreset = AVCaptureSession.Preset.photo
         let backCamera =  AVCaptureDevice.default(for: AVMediaType.video)
@@ -61,8 +75,13 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
         
     }
     
+<<<<<<< HEAD
 
         // Do any additional setup after loading the view.
+=======
+    
+    // Do any additional setup after loading the view.
+>>>>>>> temp
     
     // make preview layer fit camera view
     override func viewDidAppear(_ animated: Bool) {
@@ -82,16 +101,30 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    // collection view
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return PDFs.count
     }
-    */
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PDFCell", for: indexPath)
+        return cell
+    }
+    
+    
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     
     
     
@@ -129,7 +162,7 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
         
     }
     
-   
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -142,15 +175,51 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
         pathAnimation.duration = 0.10
         pathAnimation.autoreverses = true
         
-        // manage tounch
+        // manage touch
         let touch = touches.first
         let point = touch!.location(in: self.view)
         if outerShapeLayer.path!.contains(point) {
-            print("tapped circle")
+            // animate capture button
             innerShapeLayer.add(pathAnimation, forKey: "pathAnimation")
+            
+            // capture settings
+            let settings = AVCapturePhotoSettings()
+            let previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.first!
+            let previewFormat = [
+                kCVPixelBufferPixelFormatTypeKey as String: previewPixelType,
+                kCVPixelBufferWidthKey as String: 170,
+                kCVPixelBufferHeightKey as String: 257
+            ]
+            settings.previewPhotoFormat = previewFormat
+            // capture photo
+            stillImageOutput?.capturePhoto(with: settings, delegate: self)
+            
+        }
+    }
+    
+}
+
+// save photo to PDFs array
+extension CameraViewController: AVCapturePhotoCaptureDelegate {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let error = error {
+            print("error occurred : \(error.localizedDescription)")
+        }
+        
+        if let dataImage = photo.fileDataRepresentation() {
+            print(UIImage(data: dataImage)?.size as Any)
+            
+            let dataProvider = CGDataProvider(data: dataImage as CFData)
+            let cgImageRef: CGImage! = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: .defaultIntent)
+            let image = UIImage(cgImage: cgImageRef, scale: 1.0, orientation: UIImage.Orientation.up)
+            
+            // save image to thumbnail array
+            self.PDFs.append(image)
+            print(PDFs)
+            collectionView.reloadData()
+        } else {
+            print("some error here")
         }
     }
 }
-
-
 
