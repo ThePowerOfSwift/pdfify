@@ -10,25 +10,14 @@ import UIKit
 import AVFoundation
 
 class CameraViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> temp
     var PDFs: [UIImage] = []
     
     @IBOutlet weak var photoPreview: UIImageView!
-    
-<<<<<<< HEAD
-   
     @IBOutlet weak var collectionView: UICollectionView!
-    
-=======
-    
-    @IBOutlet weak var collectionView: UICollectionView!
->>>>>>> temp
-    
-    
+ 
+
+
     var session: AVCaptureSession?
     var stillImageOutput: AVCapturePhotoOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
@@ -39,12 +28,6 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-<<<<<<< HEAD
-=======
-        
-        
->>>>>>> temp
         session = AVCaptureSession()
         session!.sessionPreset = AVCaptureSession.Preset.photo
         let backCamera =  AVCaptureDevice.default(for: AVMediaType.video)
@@ -75,13 +58,11 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
         
     }
     
-<<<<<<< HEAD
+
 
         // Do any additional setup after loading the view.
-=======
+
     
-    // Do any additional setup after loading the view.
->>>>>>> temp
     
     // make preview layer fit camera view
     override func viewDidAppear(_ animated: Bool) {
@@ -100,19 +81,7 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     
-    
-    
-    // collection view
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PDFs.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PDFCell", for: indexPath)
-        return cell
-    }
-    
-    
+
     
     
     /*
