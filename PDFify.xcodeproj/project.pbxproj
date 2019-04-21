@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		581631ED22643330005851DA /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581631EC22643330005851DA /* CameraViewController.swift */; };
+		5819F0C5226D0EBB00DA1E96 /* FullRes+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0C1226D0EBB00DA1E96 /* FullRes+CoreDataClass.swift */; };
+		5819F0C6226D0EBB00DA1E96 /* FullRes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0C2226D0EBB00DA1E96 /* FullRes+CoreDataProperties.swift */; };
+		5819F0C7226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0C3226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift */; };
+		5819F0C8226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0C4226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift */; };
+		5819F0CA226D252E00DA1E96 /* ThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0C9226D252E00DA1E96 /* ThumbnailCell.swift */; };
 		58AF9EB22262971900094078 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF9EB12262971900094078 /* AppDelegate.swift */; };
 		58AF9EB42262971900094078 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF9EB32262971900094078 /* ViewController.swift */; };
 		58AF9EB72262971900094078 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58AF9EB52262971900094078 /* Main.storyboard */; };
@@ -37,6 +42,11 @@
 
 /* Begin PBXFileReference section */
 		581631EC22643330005851DA /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		5819F0C1226D0EBB00DA1E96 /* FullRes+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FullRes+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5819F0C2226D0EBB00DA1E96 /* FullRes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FullRes+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5819F0C3226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thumbnail+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5819F0C4226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thumbnail+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5819F0C9226D252E00DA1E96 /* ThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCell.swift; sourceTree = "<group>"; };
 		58AF9EAE2262971900094078 /* PDFify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDFify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AF9EB12262971900094078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58AF9EB32262971900094078 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +111,10 @@
 		58AF9EB02262971900094078 /* PDFify */ = {
 			isa = PBXGroup;
 			children = (
+				5819F0C1226D0EBB00DA1E96 /* FullRes+CoreDataClass.swift */,
+				5819F0C2226D0EBB00DA1E96 /* FullRes+CoreDataProperties.swift */,
+				5819F0C3226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift */,
+				5819F0C4226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift */,
 				58AF9EB12262971900094078 /* AppDelegate.swift */,
 				58AF9EB32262971900094078 /* ViewController.swift */,
 				58AF9EB52262971900094078 /* Main.storyboard */,
@@ -109,6 +123,7 @@
 				58AF9EC02262971A00094078 /* Info.plist */,
 				58AF9EB82262971900094078 /* PDFify.xcdatamodeld */,
 				581631EC22643330005851DA /* CameraViewController.swift */,
+				5819F0C9226D252E00DA1E96 /* ThumbnailCell.swift */,
 			);
 			path = PDFify;
 			sourceTree = "<group>";
@@ -265,10 +280,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5819F0CA226D252E00DA1E96 /* ThumbnailCell.swift in Sources */,
+				5819F0C7226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift in Sources */,
 				58AF9EB42262971900094078 /* ViewController.swift in Sources */,
 				581631ED22643330005851DA /* CameraViewController.swift in Sources */,
 				58AF9EB22262971900094078 /* AppDelegate.swift in Sources */,
+				5819F0C8226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift in Sources */,
 				58AF9EBA2262971900094078 /* PDFify.xcdatamodeld in Sources */,
+				5819F0C6226D0EBB00DA1E96 /* FullRes+CoreDataProperties.swift in Sources */,
+				5819F0C5226D0EBB00DA1E96 /* FullRes+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

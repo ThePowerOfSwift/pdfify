@@ -72,11 +72,13 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     // collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return PDFs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PDFCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "thumbnailCell", for: indexPath) as! ThumbnailCell
+        
+        cell.thumbnailOutlet.image = PDFs[indexPath.row]
         return cell
     }
     
@@ -156,8 +158,8 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
             let previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.first!
             let previewFormat = [
                 kCVPixelBufferPixelFormatTypeKey as String: previewPixelType,
-                kCVPixelBufferWidthKey as String: 170,
-                kCVPixelBufferHeightKey as String: 257
+                kCVPixelBufferWidthKey as String: 173,
+                kCVPixelBufferHeightKey as String: 260
             ]
             settings.previewPhotoFormat = previewFormat
             // capture photo
@@ -180,7 +182,7 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             
             let dataProvider = CGDataProvider(data: dataImage as CFData)
             let cgImageRef: CGImage! = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: .defaultIntent)
-            let image = UIImage(cgImage: cgImageRef, scale: 1.0, orientation: UIImage.Orientation.up)
+            let image = UIImage(cgImage: cgImageRef, scale: 1.0, orientation: UIImage.Orientation.right)
             
             // save image to thumbnail array
             self.PDFs.append(image)

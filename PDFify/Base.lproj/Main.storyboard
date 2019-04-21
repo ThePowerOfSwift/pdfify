@@ -31,7 +31,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PDFCell" id="HOe-wD-dOh">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="thumbnailCell" id="HOe-wD-dOh" customClass="ThumbnailCell" customModule="PDFify" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="-1.6666666666666667" width="173" height="260"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -45,6 +45,9 @@
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.043137254899999998" green="0.37647058820000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="thumbnailOutlet" destination="g2X-pN-PQh" id="aud-F1-q0a"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
