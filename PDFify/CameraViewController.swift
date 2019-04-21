@@ -9,10 +9,15 @@
 import UIKit
 import AVFoundation
 
-class CameraViewController: UIViewController {
+class CameraViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    var PDFs: [UIImage] = []
     
     @IBOutlet weak var photoPreview: UIImageView!
+    
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     
     var session: AVCaptureSession?
     var stillImageOutput: AVCapturePhotoOutput?
@@ -20,10 +25,11 @@ class CameraViewController: UIViewController {
     
     let outerShapeLayer = CAShapeLayer()
     let innerShapeLayer = CAShapeLayer()
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         
         
         session = AVCaptureSession()
@@ -56,24 +62,40 @@ class CameraViewController: UIViewController {
         
     }
     
-
-        // Do any additional setup after loading the view.
+    
+    // Do any additional setup after loading the view.
+    
+    // make preview layer fit camera view
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         videoPreviewLayer!.frame = photoPreview.bounds
     }
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    // collection view
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return PDFs.count
     }
-    */
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PDFCell", for: indexPath)
+        return cell
+    }
+    
+    
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     
     
     func drawCaptureButton() {
@@ -110,7 +132,7 @@ class CameraViewController: UIViewController {
         
     }
     
-   
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -123,15 +145,51 @@ class CameraViewController: UIViewController {
         pathAnimation.duration = 0.10
         pathAnimation.autoreverses = true
         
-        // manage tounch
+        // manage touch
         let touch = touches.first
         let point = touch!.location(in: self.view)
         if outerShapeLayer.path!.contains(point) {
-            print("tapped circle")
+            // animate capture button
             innerShapeLayer.add(pathAnimation, forKey: "pathAnimation")
+            
+            // capture settings
+            let settings = AVCapturePhotoSettings()
+            let previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.first!
+            let previewFormat = [
+                kCVPixelBufferPixelFormatTypeKey as String: previewPixelType,
+                kCVPixelBufferWidthKey as String: 170,
+                kCVPixelBufferHeightKey as String: 257
+            ]
+            settings.previewPhotoFormat = previewFormat
+            // capture photo
+            stillImageOutput?.capturePhoto(with: settings, delegate: self)
+            
+        }
+    }
+    
+}
+
+// save photo to PDFs array
+extension CameraViewController: AVCapturePhotoCaptureDelegate {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let error = error {
+            print("error occurred : \(error.localizedDescription)")
+        }
+        
+        if let dataImage = photo.fileDataRepresentation() {
+            print(UIImage(data: dataImage)?.size as Any)
+            
+            let dataProvider = CGDataProvider(data: dataImage as CFData)
+            let cgImageRef: CGImage! = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: .defaultIntent)
+            let image = UIImage(cgImage: cgImageRef, scale: 1.0, orientation: UIImage.Orientation.up)
+            
+            // save image to thumbnail array
+            self.PDFs.append(image)
+            print(PDFs)
+            collectionView.reloadData()
+        } else {
+            print("some error here")
         }
     }
 }
-
-
 
