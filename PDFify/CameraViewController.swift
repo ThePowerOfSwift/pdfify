@@ -9,9 +9,19 @@
 import UIKit
 import AVFoundation
 
-class CameraViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+
+protocol PDF {
+    func getPDF() -> UIImage?
+    func getCount() -> Int?
+    func getIndex() -> Int?
+}
+
+class CameraViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PDF {
 
     var PDFs: [UIImage] = []
+    var selectedPDF: UIImage?
+    var count: Int?
+    var index: Int?
     
     @IBOutlet weak var photoPreview: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -79,11 +89,15 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "thumbnailCell", for: indexPath) as! ThumbnailCell
         
         cell.thumbnailOutlet.image = PDFs[indexPath.row]
+        
+        print(indexPath.row)
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
     
-
     
     
     /*
@@ -191,6 +205,24 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         } else {
             print("some error here")
         }
+    }
+    
+    // unwind
+    @IBAction func unwindToCameraView(sender: UIStoryboardSegue) {
+        print("touched")
+    }
+    
+    // PDF protocol 
+    func getPDF() -> UIImage? {
+        return selectedPDF
+    }
+    
+    func getCount() -> Int? {
+        return count
+    }
+    
+    func getIndex() -> Int? {
+        return index
     }
 }
 

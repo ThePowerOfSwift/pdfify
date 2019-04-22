@@ -13,8 +13,8 @@
 		5819F0C7226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0C3226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift */; };
 		5819F0C8226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0C4226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift */; };
 		5819F0CA226D252E00DA1E96 /* ThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0C9226D252E00DA1E96 /* ThumbnailCell.swift */; };
+		5819F0CC226E407100DA1E96 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0CB226E407100DA1E96 /* PDFViewController.swift */; };
 		58AF9EB22262971900094078 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF9EB12262971900094078 /* AppDelegate.swift */; };
-		58AF9EB42262971900094078 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF9EB32262971900094078 /* ViewController.swift */; };
 		58AF9EB72262971900094078 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58AF9EB52262971900094078 /* Main.storyboard */; };
 		58AF9EBA2262971900094078 /* PDFify.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58AF9EB82262971900094078 /* PDFify.xcdatamodeld */; };
 		58AF9EBC2262971A00094078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58AF9EBB2262971A00094078 /* Assets.xcassets */; };
@@ -47,9 +47,9 @@
 		5819F0C3226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thumbnail+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5819F0C4226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thumbnail+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5819F0C9226D252E00DA1E96 /* ThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCell.swift; sourceTree = "<group>"; };
+		5819F0CB226E407100DA1E96 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		58AF9EAE2262971900094078 /* PDFify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDFify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58AF9EB12262971900094078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		58AF9EB32262971900094078 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		58AF9EB62262971900094078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		58AF9EB92262971900094078 /* PDFify.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PDFify.xcdatamodel; sourceTree = "<group>"; };
 		58AF9EBB2262971A00094078 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,7 +116,6 @@
 				5819F0C3226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift */,
 				5819F0C4226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift */,
 				58AF9EB12262971900094078 /* AppDelegate.swift */,
-				58AF9EB32262971900094078 /* ViewController.swift */,
 				58AF9EB52262971900094078 /* Main.storyboard */,
 				58AF9EBB2262971A00094078 /* Assets.xcassets */,
 				58AF9EBD2262971A00094078 /* LaunchScreen.storyboard */,
@@ -124,6 +123,7 @@
 				58AF9EB82262971900094078 /* PDFify.xcdatamodeld */,
 				581631EC22643330005851DA /* CameraViewController.swift */,
 				5819F0C9226D252E00DA1E96 /* ThumbnailCell.swift */,
+				5819F0CB226E407100DA1E96 /* PDFViewController.swift */,
 			);
 			path = PDFify;
 			sourceTree = "<group>";
@@ -280,9 +280,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5819F0CC226E407100DA1E96 /* PDFViewController.swift in Sources */,
 				5819F0CA226D252E00DA1E96 /* ThumbnailCell.swift in Sources */,
 				5819F0C7226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift in Sources */,
-				58AF9EB42262971900094078 /* ViewController.swift in Sources */,
 				581631ED22643330005851DA /* CameraViewController.swift in Sources */,
 				58AF9EB22262971900094078 /* AppDelegate.swift in Sources */,
 				5819F0C8226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift in Sources */,
