@@ -15,9 +15,15 @@ class PDFViewController: UIViewController {
     @IBOutlet weak var CountOutlet: UITextField!
     @IBOutlet weak var ShareOutlet: UIButton!
     
+    var delegate: PDF?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        PDFOutlet.image = delegate?.getPDF()
+        CountOutlet.text = "\(delegate?.getIndex() ?? 0) / \(delegate?.getCount() ?? 0)"
 
         // Do any additional setup after loading the view.
     }

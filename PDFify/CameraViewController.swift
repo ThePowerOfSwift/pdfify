@@ -89,16 +89,24 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "thumbnailCell", for: indexPath) as! ThumbnailCell
         
         cell.thumbnailOutlet.image = PDFs[indexPath.row]
-        
-        print(indexPath.row)
+
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+        
+        selectedPDF = PDFs[indexPath.row]
+        index = indexPath.row + 1
+        count = PDFs.count
+        print("INDEX / COUNT: \(index) / \(count)")
+        
+        self.performSegue(withIdentifier: "toPDFView", sender: self)
+        
     }
     
+
     
+
     
     /*
      // MARK: - Navigation
@@ -157,7 +165,13 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
         let pathAnimation = CABasicAnimation(keyPath: "path")
         pathAnimation.toValue = captureCirclePath.cgPath
         pathAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        pathAnimation.duration = 0.10
+        pathAnimation.duration = 0.15
+        pathAnimation.autoreverses = true
+        
+        let strokeAnimation = CABasicAnimation(keyPath: "strokeColor")
+        strokeAnimation.toValue = UIColor(red: 30/255, green: 175/255, blue: 1, alpha: 1.0).cgColor
+        pathAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        pathAnimation.duration = 0.15
         pathAnimation.autoreverses = true
         
         // manage touch
@@ -166,6 +180,7 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
         if outerShapeLayer.path!.contains(point) {
             // animate capture button
             innerShapeLayer.add(pathAnimation, forKey: "pathAnimation")
+            innerShapeLayer.add(strokeAnimation, forKey: "strokeAnimation")
             
             // capture settings
             let settings = AVCapturePhotoSettings()
@@ -180,6 +195,31 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
             stillImageOutput?.capturePhoto(with: settings, delegate: self)
             
         }
+    }
+    
+    // prepare
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let pdfVC = segue.destination as! PDFViewController
+        pdfVC.delegate = self
+    }
+    
+    
+    // unwind
+    @IBAction func unwindToCameraView(sender: UIStoryboardSegue) {
+        print("touched")
+    }
+    
+    // PDF protocol
+    func getPDF() -> UIImage? {
+        return selectedPDF
+    }
+    
+    func getCount() -> Int? {
+        return count
+    }
+    
+    func getIndex() -> Int? {
+        return index
     }
     
 }
@@ -206,23 +246,6 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             print("some error here")
         }
     }
-    
-    // unwind
-    @IBAction func unwindToCameraView(sender: UIStoryboardSegue) {
-        print("touched")
-    }
-    
-    // PDF protocol 
-    func getPDF() -> UIImage? {
-        return selectedPDF
-    }
-    
-    func getCount() -> Int? {
-        return count
-    }
-    
-    func getIndex() -> Int? {
-        return index
-    }
+
 }
 
