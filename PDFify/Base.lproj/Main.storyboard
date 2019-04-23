@@ -126,6 +126,9 @@
                                 <state key="normal" title="SHARE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="share:" destination="1fM-dM-Lmq" eventType="touchUpInside" id="jL1-Wf-PP8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -134,7 +137,6 @@
                     <connections>
                         <outlet property="CountOutlet" destination="ud4-D4-GGv" id="0Ud-qn-2I0"/>
                         <outlet property="PDFOutlet" destination="u12-H3-yFL" id="vFT-yi-IYU"/>
-                        <outlet property="ShareOutlet" destination="e06-bC-w8m" id="efv-LG-Sgl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EBb-G2-M8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>

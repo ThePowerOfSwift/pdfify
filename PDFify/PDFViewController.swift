@@ -13,7 +13,12 @@ class PDFViewController: UIViewController {
     
     @IBOutlet weak var PDFOutlet: UIImageView!
     @IBOutlet weak var CountOutlet: UITextField!
-    @IBOutlet weak var ShareOutlet: UIButton!
+    
+    // share pdf
+    @IBAction func share(_ sender: Any) {
+        let activityController = UIActivityViewController(activityItems: [PDFOutlet.image!], applicationActivities: nil)
+        present(activityController, animated: true, completion: nil)
+    }
     
     var delegate: PDF?
     
