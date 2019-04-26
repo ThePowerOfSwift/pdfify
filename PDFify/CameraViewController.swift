@@ -8,17 +8,19 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 
 protocol PDF {
     func getPDF() -> UIImage?
     func getCount() -> Int?
     func getIndex() -> Int?
+    func deleteImage(index: Int)
 }
 
 class CameraViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PDF {
 
-    var PDFs: [UIImage] = []
+    var PDFs: [Image] = []
     var selectedPDF: UIImage?
     var count: Int?
     var index: Int?
@@ -36,13 +38,25 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
     let innerShapeLayer = CAShapeLayer()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
+        
+        let fetchImage: NSFetchRequest<Image> = Image.fetchRequest()
+        
+        do {
+            let PDFs = try PersistenceService.context.fetch(fetchImage)
+            self.PDFs = PDFs
+        } catch {}
+        
+         print(self.PDFs.count)
+        
+        
         session = AVCaptureSession()
         session!.sessionPreset = AVCaptureSession.Preset.photo
         let backCamera =  AVCaptureDevice.default(for: AVMediaType.video)
         var error: NSError?
         var input: AVCaptureDeviceInput!
+        
         do {
             input = try AVCaptureDeviceInput(device: backCamera!)
         } catch let error1 as NSError {
@@ -88,20 +102,19 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "thumbnailCell", for: indexPath) as! ThumbnailCell
         
-        cell.thumbnailOutlet.image = PDFs[indexPath.row]
+        cell.thumbnailOutlet.image = UIImage(data: PDFs[indexPath.row].raw!, scale: 1)
 
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        selectedPDF = PDFs[indexPath.row]
-        index = indexPath.row + 1
+        selectedPDF =  UIImage(data: PDFs[indexPath.row].raw!, scale: 1)
+        index = indexPath.row
         count = PDFs.count
-        print("INDEX / COUNT: \(index) / \(count)")
         
+        // show full image on detail screen
         self.performSegue(withIdentifier: "toPDFView", sender: self)
-        
     }
     
 
@@ -222,6 +235,12 @@ class CameraViewController: UIViewController, UICollectionViewDelegate, UICollec
         return index
     }
     
+    func deleteImage(index: Int) {
+        PersistenceService.delete(PDFs[index])
+        PDFs.remove(at: index)
+        self.collectionView.reloadData()
+    }
+    
 }
 
 // save photo to PDFs array
@@ -239,13 +258,18 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             let image = UIImage(cgImage: cgImageRef, scale: 1.0, orientation: UIImage.Orientation.right)
             
             // save image to thumbnail array
-            self.PDFs.append(image)
-            print(PDFs)
+            let newImage = Image(context: PersistenceService.context)
+            newImage.raw = image.jpegData(compressionQuality: 1.0)
+            self.PDFs.append(newImage)
+         
+            PersistenceService.saveContext()
+
+            
             collectionView.reloadData()
         } else {
             print("some error here")
         }
     }
-
 }
+
 

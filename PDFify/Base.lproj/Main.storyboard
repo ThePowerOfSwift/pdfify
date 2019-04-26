@@ -130,6 +130,18 @@
                                     <action selector="share:" destination="1fM-dM-Lmq" eventType="touchUpInside" id="jL1-Wf-PP8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mv9-gh-6me">
+                                <rect key="frame" x="277" y="69" width="72" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                                <state key="normal" title="DELETE">
+                                    <color key="titleColor" red="0.93186724190000003" green="0.22647682097238273" blue="0.25511170234942315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteImage:" destination="1fM-dM-Lmq" eventType="touchUpInside" id="3pf-Fp-5Pb"/>
+                                    <segue destination="UO3-sw-QLe" kind="unwind" unwindAction="unwindToCameraViewWithSender:" id="aFN-nI-8vb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="voV-g7-VHc"/>

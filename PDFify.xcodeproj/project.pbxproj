@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5812A0282271588000E18085 /* Image+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5812A0262271588000E18085 /* Image+CoreDataClass.swift */; };
+		5812A0292271588000E18085 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5812A0272271588000E18085 /* Image+CoreDataProperties.swift */; };
+		5812A02B2271FCAD00E18085 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5812A02A2271FCAD00E18085 /* PersistenceService.swift */; };
 		581631ED22643330005851DA /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581631EC22643330005851DA /* CameraViewController.swift */; };
-		5819F0C5226D0EBB00DA1E96 /* FullRes+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0C1226D0EBB00DA1E96 /* FullRes+CoreDataClass.swift */; };
-		5819F0C6226D0EBB00DA1E96 /* FullRes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0C2226D0EBB00DA1E96 /* FullRes+CoreDataProperties.swift */; };
-		5819F0C7226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0C3226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift */; };
-		5819F0C8226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0C4226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift */; };
 		5819F0CA226D252E00DA1E96 /* ThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0C9226D252E00DA1E96 /* ThumbnailCell.swift */; };
 		5819F0CC226E407100DA1E96 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819F0CB226E407100DA1E96 /* PDFViewController.swift */; };
 		5819F0D0226E8CD300DA1E96 /* icons8-go-back-64.png in Resources */ = {isa = PBXBuildFile; fileRef = 5819F0CD226E8CD300DA1E96 /* icons8-go-back-64.png */; };
@@ -42,11 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5812A0262271588000E18085 /* Image+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Image+CoreDataClass.swift"; path = "../Image+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5812A0272271588000E18085 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Image+CoreDataProperties.swift"; path = "../Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5812A02A2271FCAD00E18085 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		581631EC22643330005851DA /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		5819F0C1226D0EBB00DA1E96 /* FullRes+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FullRes+CoreDataClass.swift"; sourceTree = "<group>"; };
-		5819F0C2226D0EBB00DA1E96 /* FullRes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FullRes+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		5819F0C3226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thumbnail+CoreDataClass.swift"; sourceTree = "<group>"; };
-		5819F0C4226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thumbnail+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5819F0C9226D252E00DA1E96 /* ThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCell.swift; sourceTree = "<group>"; };
 		5819F0CB226E407100DA1E96 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		5819F0CD226E8CD300DA1E96 /* icons8-go-back-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icons8-go-back-64.png"; path = "../../../../Downloads/icons8-go-back-64.png"; sourceTree = "<group>"; };
@@ -113,10 +111,8 @@
 		58AF9EB02262971900094078 /* PDFify */ = {
 			isa = PBXGroup;
 			children = (
-				5819F0C1226D0EBB00DA1E96 /* FullRes+CoreDataClass.swift */,
-				5819F0C2226D0EBB00DA1E96 /* FullRes+CoreDataProperties.swift */,
-				5819F0C3226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift */,
-				5819F0C4226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift */,
+				5812A0262271588000E18085 /* Image+CoreDataClass.swift */,
+				5812A0272271588000E18085 /* Image+CoreDataProperties.swift */,
 				58AF9EB12262971900094078 /* AppDelegate.swift */,
 				58AF9EB52262971900094078 /* Main.storyboard */,
 				58AF9EBB2262971A00094078 /* Assets.xcassets */,
@@ -127,6 +123,7 @@
 				5819F0C9226D252E00DA1E96 /* ThumbnailCell.swift */,
 				5819F0CB226E407100DA1E96 /* PDFViewController.swift */,
 				5819F0CD226E8CD300DA1E96 /* icons8-go-back-64.png */,
+				5812A02A2271FCAD00E18085 /* PersistenceService.swift */,
 			);
 			path = PDFify;
 			sourceTree = "<group>";
@@ -285,14 +282,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5819F0CC226E407100DA1E96 /* PDFViewController.swift in Sources */,
+				5812A02B2271FCAD00E18085 /* PersistenceService.swift in Sources */,
 				5819F0CA226D252E00DA1E96 /* ThumbnailCell.swift in Sources */,
-				5819F0C7226D0EBB00DA1E96 /* Thumbnail+CoreDataClass.swift in Sources */,
 				581631ED22643330005851DA /* CameraViewController.swift in Sources */,
+				5812A0282271588000E18085 /* Image+CoreDataClass.swift in Sources */,
 				58AF9EB22262971900094078 /* AppDelegate.swift in Sources */,
-				5819F0C8226D0EBB00DA1E96 /* Thumbnail+CoreDataProperties.swift in Sources */,
 				58AF9EBA2262971900094078 /* PDFify.xcdatamodeld in Sources */,
-				5819F0C6226D0EBB00DA1E96 /* FullRes+CoreDataProperties.swift in Sources */,
-				5819F0C5226D0EBB00DA1E96 /* FullRes+CoreDataClass.swift in Sources */,
+				5812A0292271588000E18085 /* Image+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

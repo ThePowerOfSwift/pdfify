@@ -13,12 +13,9 @@ class PDFViewController: UIViewController {
     
     @IBOutlet weak var PDFOutlet: UIImageView!
     @IBOutlet weak var CountOutlet: UITextField!
+   
     
-    // share pdf
-    @IBAction func share(_ sender: Any) {
-        let activityController = UIActivityViewController(activityItems: [PDFOutlet.image!], applicationActivities: nil)
-        present(activityController, animated: true, completion: nil)
-    }
+    
     
     var delegate: PDF?
     
@@ -28,14 +25,22 @@ class PDFViewController: UIViewController {
         super.viewDidLoad()
         
         PDFOutlet.image = delegate?.getPDF()
-        CountOutlet.text = "\(delegate?.getIndex() ?? 0) / \(delegate?.getCount() ?? 0)"
+        CountOutlet.text = "\((delegate?.getIndex())! + 1) / \(delegate?.getCount() ?? 0)"
 
         // Do any additional setup after loading the view.
     }
     
+    // share pdf
+    @IBAction func share(_ sender: Any) {
+        let activityController = UIActivityViewController(activityItems: [PDFOutlet.image!], applicationActivities: nil)
+        present(activityController, animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteImage(_ sender: UIButton!) {
+        delegate?.deleteImage(index: (delegate?.getIndex())!)
+    }
     
     
-
     /*
     // MARK: - Navigation
 
